@@ -22,4 +22,4 @@ interface IGeneralSettings {
 }
 
 
-var prog = new p5(programm);
+const prog = new p5(programm);
