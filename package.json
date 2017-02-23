@@ -7,6 +7,10 @@
     "compile": "tsc",
     "dev": "node ./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"npm run compile\""
   },
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/derfrodo/p5spielerei.git"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {

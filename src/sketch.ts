@@ -1,5 +1,5 @@
 // tslint:disable-next-line:no-reference
-/// <reference path="./definitions/p5.d.ts" />
+/// <reference path="./../definitions/p5.d.ts" />
 
 function programm(sketch: any) {
 
@@ -22,4 +22,4 @@ interface IGeneralSettings {
 }
 
 
-var prog = new p5(programm); 
+var prog = new p5(programm);

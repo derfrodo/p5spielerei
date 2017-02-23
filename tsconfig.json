@@ -4,11 +4,11 @@
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
-        "outDir": "./",
+        "outDir": "./dist",
         "sourceMap": true
     },
     "include": [
-        "sketch.ts"
+        "./src"
     ],
     "exclude": [
         "node_modules",
