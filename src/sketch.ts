@@ -21,5 +21,4 @@ interface IGeneralSettings {
     height: number;
 }
 
-
 const prog = new p5(programm);
