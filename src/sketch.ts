@@ -1,7 +1,13 @@
 // tslint:disable-next-line:no-reference
 /// <reference path="./../definitions/p5.d.ts" />
 
+import { IGeneralSettings } from "./Models/GeneralSettings";
+
+import doSomething from "./DoSom";
+
 function programm(sketch: any) {
+
+    doSomething();
 
     // tslint:disable-next-line:variable-name
     let _generalSettings: IGeneralSettings;
@@ -15,10 +21,4 @@ function programm(sketch: any) {
         sketch.background(0);
     };
 };
-
-interface IGeneralSettings {
-    width: number;
-    height: number;
-}
-
 const prog = new p5(programm);
