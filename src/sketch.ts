@@ -38,8 +38,8 @@ function tetris(sketch: any) {
 
 
     const createGame = (generalSettings: IGeneralSettings): ITetrisGameData => {
-        let cellSize = GameHelper.calculateGridCellSize(10, generalSettings);
-        let cells = [];
+        const cellSize = GameHelper.calculateGridCellSize(10, generalSettings);
+        const cells = [];
 
         const rows = 10;
         const cols = 10;
