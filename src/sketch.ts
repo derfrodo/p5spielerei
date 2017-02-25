@@ -7,9 +7,7 @@ import GameHelper from "./Helpers/TetrisGameHelper";
 
 function tetris(sketch: any) {
 
-    // tslint:disable-next-line:variable-name
     let _generalSettings: IGeneralSettings;
-
     let _game: ITetrisGameData;
 
     sketch.setup = () => {
@@ -32,8 +30,10 @@ function tetris(sketch: any) {
         sketch.noStroke();
         sketch.fill(255, 0, 255);
 
-        sketch.textSize(32);
-        sketch.text("Hallo Zusammen", _generalSettings.offsetX, 32);
+const textSize = 12;
+
+        sketch.textSize(textSize );
+        sketch.text("Hallo Zusammen", _generalSettings.offsetX, textSize );
     };
 
 
