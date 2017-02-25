@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/sketch.js",
   "scripts": {
-    "compile": "tsc && browserify dist/sketch.js -o dist/bundle.js --debug",
+    "compile": "node ./node_modules/typescript/lib/tsc.js && node ./node_modules/browserify/bin/cmd.js dist/sketch.js -o dist/bundle.js --debug",
     "dev": "node ./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"npm run compile\""
   },
   "repository": {
@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "browserify": "^14.1.0",
     "nodemon": "^1.11.0",
     "tslint": "^4.4.2",
     "typescript": "^2.2.1"
