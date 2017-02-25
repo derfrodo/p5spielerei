@@ -30,10 +30,10 @@ function tetris(sketch: any) {
         sketch.noStroke();
         sketch.fill(255, 0, 255);
 
-const textSize = 12;
+        const textSize = 24;
 
-        sketch.textSize(textSize );
-        sketch.text("Hallo Zusammen", _generalSettings.offsetX, textSize );
+        sketch.textSize(textSize);
+        sketch.text("Hallo Zusammen", _generalSettings.offsetX, textSize);
     };
 
 
