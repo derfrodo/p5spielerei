@@ -4,17 +4,21 @@
   "description": "",
   "main": "dist/sketch.js",
   "scripts": {
-    "compile": "tsc && browserify dist/sketch.js -o dist/bundle.js",
+    "compile": "tsc && browserify dist/sketch.js -o dist/bundle.js --debug",
     "dev": "node ./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"npm run compile\""
   },
-  "repository" :
-  { "type" : "git"
-  , "url" : "https://github.com/derfrodo/p5spielerei.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/derfrodo/p5spielerei.git"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^1.11.0",
+    "tslint": "^4.4.2",
+    "typescript": "^2.2.1"
+  },
+  "dependencies": {
     "p5": "^0.5.7"
   }
 }

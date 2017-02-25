@@ -20,26 +20,32 @@ function tetris(sketch: any) {
             offsetY: 40,
         };
 
-        createGame(_generalSettings);
+        _game = createGame(_generalSettings);
 
         sketch.createCanvas(_generalSettings.width, _generalSettings.height);
         sketch.background(0);
+
+        // sketch.stroke(255);
+        // sketch.line(10, 40, 30, 40);
 
         sketch.noFill();
         sketch.noStroke();
         sketch.fill(255, 0, 255);
 
         sketch.textSize(32);
-        sketch.text("Hallo Zusammen", 40, 40);
+        sketch.text("Hallo Zusammen", _generalSettings.offsetX, 32);
     };
 
 
-    const createGame = (generalSettings: IGeneralSettings) => {
+    const createGame = (generalSettings: IGeneralSettings): ITetrisGameData => {
         let cellSize = GameHelper.calculateGridCellSize(10, generalSettings);
         let cells = [];
 
-        for (let i: number = 0; i < _game.grid.rows; i++) {
-            for (let j: number = 0; j < _game.grid.cols; j++) {
+        const rows = 10;
+        const cols = 10;
+
+        for (let i: number = 0; i < rows; i++) {
+            for (let j: number = 0; j < cols; j++) {
                 const cell: ITetrisGridCell = {
                     row: i,
                     col: j,
@@ -47,12 +53,11 @@ function tetris(sketch: any) {
                 cells.push(cell);
             }
         }
-
-        _game = {
+        const game = {
             grid: {
                 cells,
-                cols: 10,
-                rows: 10,
+                cols,
+                rows,
                 cellSize,
             },
             player: {
@@ -60,6 +65,7 @@ function tetris(sketch: any) {
                 name: "",
             },
         };
+        return game;
     };
 };
 
