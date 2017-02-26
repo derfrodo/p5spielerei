@@ -26,16 +26,19 @@ export class TetrisGameDrawer {
         const offsetY: number = this._generalSettings.offsetY;
         const cellSize: number = this._game.grid.cellSize;
 
-        const alphaEmpty = 0.2;
+        const alphaEmpty = 0.1;
         const hue = 60;
         const sat = 100;
         const brightness = 50;
-        const alpha = 0.1;
+        const alpha = 0.05;
 
         const grid = this._game.grid;
 
         this._sketch.colorMode(this._sketch.HSB);
 
+        this._sketch.noStroke();
+        this._sketch.stroke(0);
+        this._sketch.strokeWeight(3);
         for (let i: number = 0; i < grid.cols; i++) {
             for (let j = 0; j < grid.rows; j++) {
                 const cell = TetrisGameHelper.Instance.getGridCell(j, i);
@@ -47,8 +50,8 @@ export class TetrisGameDrawer {
                     this._sketch.fill(hue, sat, brightness, alpha);
                 }
                 else {
-                    this._sketch.stroke(255, alphaEmpty);
-                    this._sketch.fill(0, alphaEmpty);
+                    // this._sketch.stroke(255, alphaEmpty);
+                    this._sketch.fill(255, alphaEmpty);
                 }
 
                 let cellX = offsetX + i * cellSize + cellSize / 2;

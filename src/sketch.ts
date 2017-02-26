@@ -25,7 +25,7 @@ function tetris(sketch: any) {
 
         sketch.createCanvas(_generalSettings.width, _generalSettings.height);
 
-        sketch.frameRate(5);
+        sketch.frameRate(30);
         sketch.background(0);
 
         DI.createSingletons(sketch, _game, _generalSettings);
@@ -69,7 +69,7 @@ function tetris(sketch: any) {
                 id: "",
                 name: "",
             },
-            backgroundUpdateInterval: 1000,
+            backgroundUpdateInterval: 400,
             calculateBackgroundHandle: 0,
         };
         return game;
