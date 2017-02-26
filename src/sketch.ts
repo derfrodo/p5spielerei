@@ -6,6 +6,8 @@ import { ITetrisGridCell, ITetrisGameData } from "./Models/IGame";
 import GameHelper from "./Helpers/TetrisGameHelper";
 import TetrisGameDrawer from "./Helpers/TetrisGameDrawer";
 
+import * as DI from "./Helpers/DependencyInjection";
+
 function tetris(sketch: any) {
 
     let _generalSettings: IGeneralSettings;
@@ -26,32 +28,14 @@ function tetris(sketch: any) {
         sketch.frameRate(5);
         sketch.background(0);
 
-        // sketch.stroke(255);
-        // sketch.line(10, 40, 30, 40);
+        DI.createSingletons(sketch, _game, _generalSettings);
 
-        sketch.noFill();
-        sketch.noStroke();
-        sketch.fill(255, 0, 255);
-
-
-        sketch.textSize(textSize);
-        sketch.text("Hallo Zusammen", _generalSettings.offsetX, textSize);
+        const gameHelper = GameHelper.Instance;
+        gameHelper.startGame();
     };
 
-    let textSize = 12;
-
     sketch.draw = () => {
-
-        textSize = ((textSize - 12) + 1) % 24 + 12;
-
-        sketch.background(0);
-
-        sketch.colorMode(sketch.RGB);
-        sketch.fill(255,0,255);
-        sketch.textSize(textSize);
-        sketch.text("Tetris", _generalSettings.offsetX, textSize);
-
-        var drawer = new TetrisGameDrawer(sketch, _game, _generalSettings);
+        var drawer = TetrisGameDrawer.Instance;
         drawer.drawGrid();
     }
 
@@ -68,13 +52,13 @@ function tetris(sketch: any) {
                 const cell: ITetrisGridCell = {
                     row: i,
                     col: j,
-                    blocked: Math.floor(Math.random() * 2) === 1,
-                    background: Math.floor(Math.random() * 2) === 1,
+                    blocked: false, // Math.floor(Math.random() * 2) === 1,
+                    background: false, // Math.floor(Math.random() * 2) === 1,
                 };
                 cells.push(cell);
             }
         }
-        const game = {
+        const game: ITetrisGameData = {
             grid: {
                 cells,
                 cols,
@@ -85,6 +69,8 @@ function tetris(sketch: any) {
                 id: "",
                 name: "",
             },
+            backgroundUpdateInterval: 1000,
+            calculateBackgroundHandle: 0,
         };
         return game;
     };

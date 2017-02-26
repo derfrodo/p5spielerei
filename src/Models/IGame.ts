@@ -4,6 +4,10 @@ import { IGeneralSettings } from "./IGeneralSettings";
 export interface ITetrisGameData {
     player: IPlayer;
     grid: ITetrisGrid;
+
+
+    backgroundUpdateInterval : number ;
+    calculateBackgroundHandle:number;
 }
 
 export interface ITetrisGrid {
