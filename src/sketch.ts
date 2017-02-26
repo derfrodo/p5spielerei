@@ -1,9 +1,10 @@
 // tslint:disable-next-line:no-reference
-/// <reference path="./../definitions/p5.d.ts" />
+/// <reference path="./../definitions/definitions.d.ts" />
 
 import { IGeneralSettings } from "./Models/IGeneralSettings";
 import { ITetrisGridCell, ITetrisGameData } from "./Models/IGame";
 import GameHelper from "./Helpers/TetrisGameHelper";
+import TetrisGameDrawer from "./Helpers/TetrisGameDrawer";
 
 function tetris(sketch: any) {
 
@@ -21,6 +22,8 @@ function tetris(sketch: any) {
         _game = createGame(_generalSettings);
 
         sketch.createCanvas(_generalSettings.width, _generalSettings.height);
+
+        sketch.frameRate(5);
         sketch.background(0);
 
         // sketch.stroke(255);
@@ -30,11 +33,27 @@ function tetris(sketch: any) {
         sketch.noStroke();
         sketch.fill(255, 0, 255);
 
-        const textSize = 24;
 
         sketch.textSize(textSize);
         sketch.text("Hallo Zusammen", _generalSettings.offsetX, textSize);
     };
+
+    let textSize = 12;
+
+    sketch.draw = () => {
+
+        textSize = ((textSize - 12) + 1) % 24 + 12;
+
+        sketch.background(0);
+
+        sketch.colorMode(sketch.RGB);
+        sketch.fill(255,0,255);
+        sketch.textSize(textSize);
+        sketch.text("Tetris", _generalSettings.offsetX, textSize);
+
+        var drawer = new TetrisGameDrawer(sketch, _game, _generalSettings);
+        drawer.drawGrid();
+    }
 
 
     const createGame = (generalSettings: IGeneralSettings): ITetrisGameData => {
@@ -49,6 +68,8 @@ function tetris(sketch: any) {
                 const cell: ITetrisGridCell = {
                     row: i,
                     col: j,
+                    blocked: Math.floor(Math.random() * 2) === 1,
+                    background: Math.floor(Math.random() * 2) === 1,
                 };
                 cells.push(cell);
             }
