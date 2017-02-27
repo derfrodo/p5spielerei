@@ -178,7 +178,7 @@ export class Color {
             default:
                 throw "failed to convert color from hsv to rgb";
         }
-        console.log(result);
+        // console.log(result);
 
         return result;
     }

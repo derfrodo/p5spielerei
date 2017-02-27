@@ -80,10 +80,18 @@ const prog = new p5(tetris);
 
 
 function programm(sketch: Sketch) {
+
+    const width = 640; const height = 480;
     sketch.setup = () => {
-        sketch.createCanvas(640, 480);
+        sketch.createCanvas(width, height);
+    };
+
+    sketch.draw = () => {
         sketch.background(0);
-    }
+        sketch.noFill();
+        sketch.stroke(255, 0, 255);
+        sketch.rect(0, 0, width - 1, height - 1);
+    };
 }
 
 const prog2 = new p5(programm);

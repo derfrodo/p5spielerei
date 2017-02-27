@@ -57,7 +57,7 @@ export class TetrisGameDrawer {
                 else if (cell.background) {
                     this._sketch.fill(color._red, color._green, color._blue,alpha );
                     
-                     console.log(color);
+                    //  console.log(color);
                     // this._sketch.fill(color.hue,color.sat,color.brightness, alpha);
                 }
                 else {
