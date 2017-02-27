@@ -3,6 +3,7 @@
 import { IGeneralSettings } from "./../Models/IGeneralSettings";
 import { ITetrisGridCell, ITetrisGameData } from "./../Models/IGame";
 import TetrisGameHelper from "./TetrisGameHelper";
+import { Color } from "./../Models/Color";
 
 export class TetrisGameDrawer {
 
@@ -26,15 +27,22 @@ export class TetrisGameDrawer {
         const offsetY: number = this._generalSettings.offsetY;
         const cellSize: number = this._game.grid.cellSize;
 
-        const alphaEmpty = 0.1;
-        const hue = 60;
-        const sat = 100;
-        const brightness = 50;
-        const alpha = 0.05;
+        const color = new Color();
+
+        color.hue = 60;
+        color.sat = 100;
+        color.brightness = 100;
+
+        const alphaEmpty = 25;
+        // const hue = 60;
+        // const sat = 100;
+        // const brightness = 100;
+        const alpha = 20;
 
         const grid = this._game.grid;
 
-        this._sketch.colorMode(this._sketch.HSB);
+        //this._sketch.colorMode(this._sketch.HSB);
+        this._sketch.colorMode(this._sketch.RGB);
 
         this._sketch.noStroke();
         this._sketch.stroke(0);
@@ -47,7 +55,10 @@ export class TetrisGameDrawer {
                     this._sketch.fill(10, 0, 50, alphaEmpty);
                 }
                 else if (cell.background) {
-                    this._sketch.fill(hue, sat, brightness, alpha);
+                    this._sketch.fill(color._red, color._green, color._blue,alpha );
+                    
+                     console.log(color);
+                    // this._sketch.fill(color.hue,color.sat,color.brightness, alpha);
                 }
                 else {
                     // this._sketch.stroke(255, alphaEmpty);

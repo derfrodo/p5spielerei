@@ -79,54 +79,11 @@ function tetris(sketch: any) {
 const prog = new p5(tetris);
 
 
-/*
-sketch.js 
-function setup() {
-    createCanvas(400, 400);
-    textSize(32);
-
-    for (let i = 1; i <= numbers; i++) {
-        let r = startNumber / i;
-        console.log(r);
+function programm(sketch: Sketch) {
+    sketch.setup = () => {
+        sketch.createCanvas(640, 480);
+        sketch.background(0);
     }
-    // noLoop();
 }
 
-const noRest = function (num, numbers) {
-    for (let i = 1; i <= numbers; i++) {
-        let r = num / i;
-        if (Math.floor(r) < r) {
-            console.log(r);
-            return false;
-        }
-    }
-    return true;
-}
-
-var startNumber = 420;
-var numbers = 14;
-
-function draw() {
-    let exit = 0;
-    do {
-        if (noRest(startNumber, numbers)) {
-            console.log(startNumber);
-    text(`Zahl ${startNumber}`, 40, 40)
-        noLoop();
-            break;
-        }
-        else {
-
-            startNumber +=7;
-            exit++;
-            if (exit >= 5) {
-                background(255)
-    text(`Zahl ${startNumber}`, 40, 40)
-                break;
-            }
-
-            console.log(startNumber);
-        }
-    } while (true)
-}
-*/
+const prog2 = new p5(programm);
